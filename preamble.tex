@@ -1,0 +1,186 @@
+\IfFileExists{stacks-project.cls}{%
+\documentclass{stacks-project}
+}{%
+\documentclass{amsart}
+}
+
+
+% The following AMS packages are automatically loaded with
+% the amsart documentclass:
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{amsthm}
+
+% For commutative diagrams you can use
+% \usepackage{amscd}
+\usepackage[turkish]{babel}
+\usepackage{amsmath, amsthm, amssymb, amsfonts, mathrsfs}
+\usepackage[utf8]{inputenc}
+
+\usepackage[all]{xy}
+
+% We use 2cell for 2-commutative diagrams.
+\xyoption{2cell}
+\UseAllTwocells
+
+% To put source file link in headers.
+% Change "template.tex" to "this_filename.tex"
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \lhead{}
+% \chead{}
+% \rhead{Source file: \url{template.tex}}
+% \lfoot{}
+% \cfoot{\thepage}
+% \rfoot{}
+% \renewcommand{\headrulewidth}{0pt}
+% \renewcommand{\footrulewidth}{0pt}
+% \renewcommand{\headheight}{12pt}
+
+\usepackage{multicol}
+\usepackage{xcolor}
+% For cross-file-references
+\usepackage{xr-hyper}
+
+% Package for hypertext links:
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=violet}
+
+% For any local file, say "hello.tex" you want to link to please
+% use \externaldocument[hello-]{hello}
+\externaldocument[introduction-]{introduction}
+\externaldocument[conventions-]{conventions}
+\externaldocument[sets-]{sets}
+\externaldocument[categories-]{categories}
+\externaldocument[topology-]{topology}
+\externaldocument[sheaves-]{sheaves}
+\externaldocument[sites-]{sites}
+\externaldocument[stacks-]{stacks}
+\externaldocument[fields-]{fields}
+\externaldocument[algebra-]{algebra}
+\externaldocument[brauer-]{brauer}
+\externaldocument[homology-]{homology}
+\externaldocument[derived-]{derived}
+\externaldocument[simplicial-]{simplicial}
+\externaldocument[more-algebra-]{more-algebra}
+\externaldocument[smoothing-]{smoothing}
+\externaldocument[modules-]{modules}
+\externaldocument[sites-modules-]{sites-modules}
+\externaldocument[injectives-]{injectives}
+\externaldocument[cohomology-]{cohomology}
+\externaldocument[sites-cohomology-]{sites-cohomology}
+\externaldocument[dga-]{dga}
+\externaldocument[dpa-]{dpa}
+\externaldocument[hypercovering-]{hypercovering}
+\externaldocument[schemes-]{schemes}
+\externaldocument[constructions-]{constructions}
+\externaldocument[properties-]{properties}
+\externaldocument[morphisms-]{morphisms}
+\externaldocument[coherent-]{coherent}
+\externaldocument[divisors-]{divisors}
+\externaldocument[limits-]{limits}
+\externaldocument[varieties-]{varieties}
+\externaldocument[topologies-]{topologies}
+\externaldocument[descent-]{descent}
+\externaldocument[perfect-]{perfect}
+\externaldocument[more-morphisms-]{more-morphisms}
+\externaldocument[flat-]{flat}
+\externaldocument[groupoids-]{groupoids}
+\externaldocument[more-groupoids-]{more-groupoids}
+\externaldocument[etale-]{etale}
+\externaldocument[chow-]{chow}
+\externaldocument[adequate-]{adequate}
+\externaldocument[dualizing-]{dualizing}
+\externaldocument[etale-cohomology-]{etale-cohomology}
+\externaldocument[proetale-]{proetale}
+\externaldocument[crystalline-]{crystalline}
+\externaldocument[spaces-]{spaces}
+\externaldocument[spaces-properties-]{spaces-properties}
+\externaldocument[spaces-morphisms-]{spaces-morphisms}
+\externaldocument[decent-spaces-]{decent-spaces}
+\externaldocument[spaces-cohomology-]{spaces-cohomology}
+\externaldocument[spaces-limits-]{spaces-limits}
+\externaldocument[spaces-divisors-]{spaces-divisors}
+\externaldocument[spaces-topologies-]{spaces-topologies}
+\externaldocument[spaces-descent-]{spaces-descent}
+\externaldocument[spaces-perfect-]{spaces-perfect}
+\externaldocument[spaces-more-morphisms-]{spaces-more-morphisms}
+\externaldocument[spaces-over-fields-]{spaces-over-fields}
+\externaldocument[spaces-groupoids-]{spaces-groupoids}
+\externaldocument[spaces-more-groupoids-]{spaces-more-groupoids}
+\externaldocument[bootstrap-]{bootstrap}
+\externaldocument[groupoids-quotients-]{groupoids-quotients}
+\externaldocument[formal-defos-]{formal-defos}
+\externaldocument[defos-]{defos}
+\externaldocument[cotangent-]{cotangent}
+\externaldocument[algebraic-]{algebraic}
+\externaldocument[examples-stacks-]{examples-stacks}
+\externaldocument[stacks-sheaves-]{stacks-sheaves}
+\externaldocument[criteria-]{criteria}
+\externaldocument[artin-]{artin}
+\externaldocument[quot-]{quot}
+\externaldocument[stacks-properties-]{stacks-properties}
+\externaldocument[stacks-morphisms-]{stacks-morphisms}
+\externaldocument[stacks-cohomology-]{stacks-cohomology}
+\externaldocument[stacks-perfect-]{stacks-perfect}
+\externaldocument[stacks-introduction-]{stacks-introduction}
+\externaldocument[examples-]{examples}
+\externaldocument[exercises-]{exercises}
+\externaldocument[guide-]{guide}
+\externaldocument[desirables-]{desirables}
+\externaldocument[coding-]{coding}
+\externaldocument[obsolete-]{obsolete}
+\externaldocument[fdl-]{fdl}
+\externaldocument[index-]{index}
+
+% Theorem environments.
+%
+\theoremstyle{plain}
+\newtheorem{theorem}[subsection]{Teorem}
+\newtheorem{proposition}[subsection]{Önerme}
+\newtheorem{lemma}{Yardımcı Teorem}
+
+\theoremstyle{definition}
+\newtheorem{definition}[subsection]{Tamım}
+\newtheorem{example}[subsection]{Örnek}
+\newtheorem{exercise}[subsection]{Exercise}
+\newtheorem{situation}[subsection]{Situation}
+
+\theoremstyle{remark}
+\newtheorem{remark}[subsection]{Uyarı}
+\newtheorem{remarks}[subsection]{Remarks}
+
+\theoremstyle{corollary}
+\newtheorem{corollary}{Sonuç}
+
+\newtheorem{prob}{Problem}
+\newtheorem{coz}{Çözüm}
+
+\numberwithin{equation}{subsection}
+\numberwithin{lemma}{section}
+\numberwithin{corollary}{section}
+\numberwithin{prob}{section}
+\numberwithin{coz}{section}
+% Macros
+%
+\def\ucgen{\bigtriangleup}
+\def\ankxk{\sum\limits_ka_{nk}x_k}
+\def\ank{a_{nk}}
+\def\bnk{b_{nk}}
+\def\sgn{\text{sgn }}
+\def\cs{c_o}
+\def\lsons{l_\infty}
+\def\natn{\mathbb{N}}
+\def\compc{\mathbb{C}}
+\def\lim{\mathop{\rm lim}\nolimits}
+\def\colim{\mathop{\rm colim}\nolimits}
+\def\Spec{\mathop{\rm Spec}}
+\def\Hom{\mathop{\rm Hom}\nolimits}
+\def\SheafHom{\mathop{\mathcal{H}\!{\it om}}\nolimits}
+\def\Sch{\textit{Sch}}
+\def\Mor{\mathop{\rm Mor}\nolimits}
+\def\Ob{\mathop{\rm Ob}\nolimits}
+\def\Sh{\mathop{\textit{Sh}}\nolimits}
+\def\NL{\mathop{N\!L}\nolimits}
+\def\proetale{{pro\text{-}\acute{e}tale}}
+\def\etale{{\acute{e}tale}}
