@@ -1,0 +1,1285 @@
+\input{preamble}
+\begin{document}
+
+
+\title{Regüler Matris Transformasyonlari}
+\maketitle
+
+\tableofcontents
+
+\newpage
+\section*{Giriş}
+\label{section-introduction}
+$A=(a_{nk})\quad(n,k=1,2,\ldots)$ satır ve sütun sayıları sonsuz olan kompleks terimli bir matris olsun. $X,Y$, $S$ uzayının gerçek altkümelerin olan $l_\infty,\,c,\,c_o,\,l(p),\,l_p$ dizi uzaylarından herhangi ikisini temsil etsin. Buradaki herbir küme, $\mathbb{C}$ kompleks sayılar cismi üzerinde birer lineer uzay olduğundan, $\forall x=x_k\in X$ dizisini, $x=\begin{bmatrix}x_1\\x_2\\\vdots\end{bmatrix}$ vektörel formunda yazabiliriz. Böylece bildiğimiz klasik matris çarpımını kullanarak,
+$$\begin{aligned}
+Ax&=\begin{bmatrix}
+a_{11} & a_{12} & \ldots & a_{1k} &\ldots\\
+a_{21} & a_{22} & \ldots & a_{2k} &\ldots\\
+\ldots & \ldots & \ldots & \ldots &\ldots\\
+a_{n1} &a_{n2}  & \ldots & a_{nk} &\ldots\\
+\ldots & \ldots & \ldots & \ldots &\ldots\\
+\end{bmatrix}
+\begin{bmatrix}
+x_1 \\ x_2 \\ \vdots \\x_k\\ \vdots
+\end{bmatrix}\\
+&=\begin{bmatrix}
+a_{11}x_1+ a_{12}x_2+ \ldots + a_{1k}x_k+\ldots\\
+a_{21}x_1+ a_{22}x_2+ \ldots + a_{2k}x_k+\ldots\\
+\ldots \quad\ldots\quad  \ldots\quad  \ldots \quad\ldots\quad\ldots\quad\ldots\\
+a_{n1}x_1+a_{n2}x_2+ \ldots + a_{nk}x_k+\ldots\\
+\ldots \quad\ldots\quad  \ldots\quad  \ldots \quad\ldots\quad\ldots\quad\ldots
+\end{bmatrix}=A_n(x)
+\end{aligned}$$
+dizisini elde ederiz. Burada $\forall n\in \mathbb{N}$ için $a_{n1}x_1+a_{n2}x_2+\ldots+a_{nk}x_k+\ldots$ toplamının varlığını kabul ediyoruz. Yani, $\forall n\in \mathbb{N}$ için $\sum\limits_na_{nk}x_k$ serisinin yakınsaklığını kabul ediyoruz.
+
+Eğer her bir terimi bir sonsuz seri olan $Ax=(A_n(x))$ dizisi, $Y$ dizi uzayının bir elemanı ise, $A=(a_{nk})$ matrisine $X$ dizi uzayından, $Y$ dizi uzayı içine bir dönüşüm denir ve $A\in (X,Y)$ şeklinde gösterilir. Bu dönüşümün lineer olduğu açıktır.
+
+$A(x)$ dizisinin genel terimi,
+$$
+a_{n1}x_1+a_{n2}x_2+\ldots+a_{nk}x_k+\ldots=\sum\limits_{k=1}^\infty a_{nk}x_k
+$$
+serisidir. Biz bunu,
+$$
+A_n(x)=\sum\limits_{k=1}^\infty a_{nk}x_k
+$$
+şeklinde göstereceğiz. Buna göre, önceden bildiğimiz şekilde,
+$$
+A(x)=\left(A_n(x)\right)=\left(\sum\limits_{k=1}^\infty a_{nk}x_k\right)
+$$
+olarak yazılabilir.
+
+Yukarıda tanımladığımız biçimde bir dönüşüm için özel dönüşümler olan matrisler yerine, niçin genel bir lineer dönüşüm alındığı sorusu aklımıza gelebilir. Matrisleri seçişimizin sebebi, çoğu hallerde, iki dizi uzayı arasındaki en genel dönüşümün bir matrisle verilebilmesindendir.
+
+Dizilerle matris dönüşümleri arasındaki ilgi, toplanabilme teorisiyle bulunan bazı özel sonuçlardan doğmuştur. Bu durumu Euler'in verdiği şu klasik örnekle örnekle biraz daha açıklayalım:
+
+Euler, $(1+x)^{-1}=1-x+x^2-x^3+\ldots\,$ formülünde $x=1$ koyarak,\\ $1-1+1-1+\ldots=1/2$ garip sonucunu elde etti. Biz biliyoruz ki yukarıdaki formül $|x|<1$ için geçerlidir.
+
+$\sum\limits_n(-1)^n=1-1+1-1+\ldots\,$ serisi veya bunun kısmi toplamlar dizisi olan $s=(s_n)=(1,0,1,0,\ldots)$ dizisi Cauchy anlamında ıraksaktır. Bu durumda eskiden bildiğimiz $(\epsilon,N(\epsilon))$ yakınsaklık tanımına göre $s=(s_n)=(1,0,1,0,\ldots)$ dizisinin limiti $1/2$ olamaz. Euler'in yaptığı işlem garip görünmekte ise de, bizim için başka bir limitleme fikri ortaya çıkarmaktadır. 
+
+$s$ dizinin genel terimi $s_n=\frac{1}{2}(1+(-1)^n)$ olduğundan, dizinin terimlerinin $0$ ile $1$ arasında salınması bize,
+$$
+t_n=\frac{s_o+s_1+\ldots+s_n}{n+1}
+$$
+aritmetik ortalamasının teşkili fikrini verir. Böylece,
+$$
+\begin{aligned}
+t_n&=\frac{(1+(-1)^0)+(1+(-1)^1)+\ldots+(1+(-1)^n)}{2(n+1)}\\
+&=\frac{(n+1)+(1-1+\ldots+(-1)^n)}{2(n+1)}\\
+&=\frac{(n+1)+\frac{1}{2}(1+(1)^n)}{2(n+1)}=\frac{1}{2}+\frac{1}{4}\frac{1+(-1)^n}{n+1}
+\end{aligned}
+$$
+$\Rightarrow\lim_ns_n=\lim_n\left(\frac{1}{2}+\frac{1}{4}\frac{1+(-1)^n}{n+1}\right)=1/2$ elde edilir.
+
+Yukarıdaki işleme dikkat edilirse, $t=(t_n)$ dizisi, $s_n=\frac{1}{2}(1+(-1)^n)$ olmak üzere $(s_n)=s$ dizisinin,
+$$a_{nk}=
+\begin{cases}
+\frac{1}{n+1}, & 0\leq k\leq n\\
+0, & k>n
+\end{cases}
+$$
+şeklinde tanımlanmış  $A=(a_{nk})$ matrisiyle,  başta tanımladığımız biçimde dönüşümünden ibarettir. Yine başta verdiğimiz gösterimlere göre,
+$$
+s=(s_n)\in l_\infty,\qquad (A_n(x))\in \mathbb{C}
+$$
+olduğundan, özel bir  $A$ matrisiyle sınırlı (fakat ıraksak) bir diziyi, yakınsak bir diziye dönüştürmüş olduk. Bu durumda bizim esas amacımız ortaya çıkmış olmaktadır. Bizim problemimiz, $x=(x_k)\in X$ verildiğinde, $A(x)\in Y$ olması için, $A$ matrisi üzerine konulacak gerek ve yeter şartları araştırmaktır. Bunun için ilgili temel teoremleri ve onların sonuçlarını vereceğiz. Daha açıklık kazandırmak bakımından konumuzu diziden-diziye, seriden-diziye ve seriden-seriye dönüşümler olmak üzere üç bölümde inceleyeceğiz.\newpage
+\section{Diziden-Diziye Dönüşümler}
+
+Bu bölümde $x=(x_k)$ dizisi $l_\infty,\,c,\,c_o\,$ gibi dizi uzaylarının elemanı olduğunda, dönüşüm dizisi olan $(A_n(x))$'in $c,\,c_o\,$ uzaylarının elemanı olması için gerek ve yeter şartları inceleyeceğiz. Önce varlık teoremleri diyebileceğimiz şu iki teoremi verelim:
+\begin{theorem} $A=(a_{nk})$ matrisi için aşağıdaki özellikler sağlansın;
+\item[i)] $a_{nk}\to 0\qquad(n\to\infty,\,k\text{ sabit})$
+\item[ii)] $M=\sup_n\sum\limits_k|a_{nk}|<\infty$
+
+Bu takdirde, $A\in B(c_o,c_o)$ ve $\|A\|=M$
+\end{theorem}
+\begin{proof}
+Önce $A\in B(c_o,c_o)$ olduğunu gösterelim. 
+
+$x=(x_k)\in c_o$ olsun. $x=\theta=(0,0,\ldots)$ ise $\forall n\in\mathbb{N}$ için,
+$$
+A_n(x)=\sum_ka_{nk}x_k=0
+$$
+olur ki durum açıktır. Şimdi, $x\neq\theta$ olsun. Hipotezdeki şartlar altında,\\
+$A_n(x)=\sum\limits_ka_{nk}x_k$ serisi $\forall n\in \mathbb{N}$ için mutlak yakınsaktır. Çünkü $x_k\to 0$ olduğundan $\forall k\in\mathbb{N}$ için $|x_k|\leq H$ (yani dizi sınırlı) ve $\forall n\in\mathbb{N}$ için,
+$$
+\sum\limits_k|a_{nk}|<\infty
+$$
+dir. O halde $M=\sup\sum\limits_k|a_{nk}|<\infty\iff\sum|a_{nk}|<H<\infty$
+
+Diğer taraftan $\forall x\in c_o$ için $\|x\|=\max|x_k|\Rightarrow |x_k|<\|x\|$ olduğuna göre, $m\geq 1$ için,
+$$\begin{aligned}
+|A_n(x)|&\leq\sum\limits_{k=1}^m|a_{nk}|\|x\|+\sum\limits_{k=m+1}^\infty|a_{nk}|\max|x_k|\\
+&\leq\|x\|\sum\limits_{k=1}^m|a_{nk}|+M\max\limits_{k\geq m+1}|x_k|
+\end{aligned}$$
+olur. $(x_k)\in c_o$ olduğundan, yeteri kadar büyük $m$ için,
+$$
+\max\limits_{k\geq m+1} |x_k|<\frac{\epsilon}{2M} \text{ ve } a_{nk}\to 0\quad(n\to\infty,\,k\text{ sabit})
+$$
+olduğundan yeteri kadar büyük $n$ için,
+$$
+\sum\limits_{k=1}^m|a_{nk}|<\frac{\epsilon}{2\|x\|}
+$$
+yapılabilir. Demek ki, $m$ yi ... uygun seçenek, yeteri kadar büyük $n$ için,
+$$
+|A_n(x)|\leq \|x\|\frac{\epsilon}{2\|x\|}+M\frac{\epsilon}{2M}=\epsilon
+$$
+yapılabilir. O halde $(A_n(x))\in c_o$
+
+$A$ lineerdir, çünkü; $\forall x,y\in c_o$ ve $\forall \lambda,\mu \in c_o$ için,
+$$\begin{aligned}
+A(\lambda x+\mu y)&=\left(\sum_ka_{nk}(\lambda x_k+\mu y_k)\right)_{n\in\mathbb{N}}\\
+&=\lambda\left(\sum_ka_{nk}x_k\right)_{n\in\mathbb{N}}+\mu \left(\sum_ka_{nk}y_k\right)_{n\in\mathbb{N}}=\lambda A(x)+\mu A(y)
+\end{aligned}$$
+
+Şimdi $A$'nın sınırlı olduğunu gösterelim. $\forall x=(x_k)\in c_o$ için,
+$$
+\|x\|=\sup|x_k|=\max|x_k| 
+$$
+olduğundan, $(A_n(x))\in c_o$ olduğuna göre,
+$$
+\|A(x)\|=\sup_n|A_n(x)|=\sup_n\left|\sum\limits_ka_{nk}x_k\right|\leq M\|x\|
+$$
+dir. Şu halde,
+$$
+\|A(x)\|\leq M\|x\|\Rightarrow A\text{ sınırlıdır.}
+$$
+$A:c_o\to c_o$ lineer ve sınırlı olduğundan, $A\in B(c_o,c_o)$ dır.\
+
+Son olarak, $\|A\|=M$ olduğunu gösterelim.
+
+(1) $$\|A\|=\sup\limits_{x\neq\theta}\frac{\|A(x)\|}{\|x\|}\leq\sup\limits_{x\neq\theta}\frac{M\|x\|}{\|x\|}=M$$ $\Rightarrow\|A\|\leq M$\\
+
+(2) $$M=\sup\limits_n\sum\limits_n|a_{nk}|<\infty$$
+$\Rightarrow\forall\epsilon>0,\quad\exists m=m(\epsilon)$ öyle ki, ($\sup$ özelliğinden)
+$$
+\sum\limits_{k=1}^\infty|a_{mk}|>M-\frac{\epsilon}{2}
+$$
+Diğer taraftan, 
+$$
+\sum_k|a_{mk}|<\infty\Rightarrow p=p(\epsilon)\quad\text{ öyle ki }\quad\sum_{k>p}|a_{mk}|<\frac{\epsilon}{2}
+$$
+Böylece,
+$$
+\sum\limits_{k=1}^p|a_{mk}|>M-\epsilon
+$$
+elde edilir. Şimdi, 
+$$x_k=
+\begin{cases}
+\text{sgn } a_{mk}, & 1\leq k\leq p\\
+0, & k>p
+\end{cases}
+$$
+olacak şekilde $x=(x_k)\in c_o$ dizisini tanımlayalım. $\|x\|=1$ olduğu açıktır. Buna göre,
+$$\begin{aligned}
+|A_m(x)&=\left|\sum\limits_{k=1}^pa_{mk}x_k+\sum\limits_{k=p+1}^\infty a_{mk}x_k\right|\\
+&=\left|\sum\limits_{k=1}^pa_{mk}\text{ sgn }a_{mk}\right|=\sum\limits_{k=1}^p|a_{mk}|
+\end{aligned}$$
+ve yukarıdaki sonuç dikkate alınarak, $A_m(x)>M-\epsilon$ elde edilir. $$\|A_m(x)\|=|A_m(x)|$$ olduğundan, $\|A_m(x)\|>M-\epsilon$ elde edilir. Sonuç olarak,
+$$
+\frac{\|A(x)\|}{\|x\|}=\sup_{n}|A_n(x)|\geq|A_m(x)|\geq M-\epsilon
+$$
+olacağından ve,
+$$
+\|A\|=\sup_{x\neq\theta}\frac{\|A(x)\|}{\|x\|}\text{ olduğuna göre,}
+$$
+$\|A\|=\sup_{x\neq\theta}\frac{\|A(x)\|}{\|x\|}\geq M$ bulunur. Böylece (1) ve (2) den $\|A\|=M$ dir.
+\end{proof}
+
+Bu teorem bize belli tipteki bir matrisin, $c_o$ dan kendi içine sınırlı bir lineer dönüşüm tanımladığını göstermektedir. Şimdi bunun karşıtını ispatlayalım.
+
+\begin{theorem}
+$A\in B(c_o,c_o)$ olsun. Bu takdirde $A$ sınırlı lineer dönüşümü, $\forall x\in c_o$ için,
+$$
+A_n(x)=\sum\limits_{k=1}^\infty a_{nk}x_k
+$$
+olacak şekilde bir $(a_{nk})$ matrisi tayin eder. Ayrıca bu matris için,
+\item[i)] $a_{nk}\to 0\quad(n\to\infty,\, k\text{ sabit})$
+\item [ii)] $\|A\|=\sup_n\sum\limits_{k=1}^\infty|a_{nk}|<\infty$\\
+şartları sağlanır.
+\end{theorem}
+
+\begin{proof}
+$e_1=(1,0,0,\ldots),\,e_2=(0,1,0,\ldots),\ldots$ olmak üzere, $(e_k)$ dizisi $c_o$ için bir bazdır. O halde $\forall x\in c_o $ için,
+$$
+x=\sum\limits_{k=1}^\infty x_ke_k \quad\text{  yazılabilir.}
+$$
+$A$ nın sınırlı ve sürekli oluşu nedeniyle,
+$$
+A(x)=\sum\limits_{k=1}^\infty x_kA(e_k)
+$$
+yazılabilir. $\forall k\in \mathbb{N}$ için $e_k\in c_o$ olduğundan hipotez gereğince $A(e_k)\in c_o$ dır.
+
+$A(e_k)$, $(a_k^1,\,a_k^2,\ldots)\in c_o\quad(k=1,2,\ldots)$ şeklinde bir dizi olacağına göre, $\forall n\in \mathbb{N}$ için $|x_n|<\|x\|$,
+$$
+A(x)=\sum\limits_{k=1}^\infty x_kA(e_k)=\sum\limits_{k=1}^\infty x_k(a_k^n)_{\forall n\in \mathbb{N}}
+$$
+olarak yazılabilir. Buna göre bu yeni dizinin genel terimi
+$$
+A_n(x)=\sum_ka_k^nx_k\qquad(n=1,2,\ldots)
+$$
+veya alıştığımız şekilde,
+$$
+A_n(x)=\sum_ka_{nk}x_k
+$$
+olur ki, gösterilmek istenen de bu idi. Şimdi i) ve ii) nin ispatını verelim.\\[5pt]
+
+$\forall k\in \mathbb{N}$ için $e_k\in c_o$ olduğuna göre, hipotez gereğince $A(e_k)\in c_o$, yani,
+$$
+(a_k^1,a_k^2,\ldots)=(a_{1k},a_{2k},\ldots,a_{nk},\ldots)\in c_o
+$$
+olacağından $a_{nk}\to 0\quad(n\to\infty, k\text{ sabit})$ dir. Bu ise i) nin ispatıdır.\\[5pt]
+
+$\forall x\in c_o,\,A(x)\in c_o$ ve $\|A(x)\|=\max|a_n(x)|$,
+$$
+\|A\|=\sup_{x\neq\theta}\frac{\|A(x)\|}{\|x\|}
+$$
+olduğuna göre $\forall n\in\mathbb{N}$ için, $$|A_n(x)|\leq\|A(x)\|\leq\|A\|.\|x\|$$ olup, $A_n:c_o\to c_o$ fonksiyoneli sınırlıdır (açık olarak lineerdir). Şu halde $A_n\in c_o^*$ dır. $\lim_nA_n(x)=0$ olduğundan Banach-Steinhaus teoreminin şartları sağlanır. O halde $(\|A_n\|)$ normlar dizisi sınırlıdır. Yani $\forall n\in\mathbb{N}$ için, $\|A_n\|\leq H$ olacak şekilde bir H sabiti vardır. Ayrıca,
+$$
+A_n(x)=\sum_ka_{nk}x_k
+$$
+olduğuna göre $A_n$ fonksiyonelinin normu,
+$$
+\|A_n\|=\sum_{k=1}^\infty|a_{nk}|
+$$
+dır. O halde $\sum_{k=1}^\infty|a_{nk}|\leq H$ olup $M=\sup_n\sum_k|a_{nk}|<\infty$ olur. Böylece teorem 1.1 e göre $\|A\|=H$ dır.
+\end{proof}
+
+Teorem 1.2 deki benzer metodlar kullanılarak belli $X,Y\neq l_\infty$ dizi uzayları için $A\in B(X,Y)$ bir matrisle verilebilir. $l_\infty$ un istisna edilmesinin sebeb
+, $l_\infty^*$ dual  uzayının her elemanının $\sum_ka_kx_k$ şeklinde ifade edilemeyişindendir. Biz dizi uzaylarında yalnız,
+$$
+A_n(x)=\sum_ka_{nk}x_k
+$$
+şeklindeki matris dönüşümlerini gözönüne alacağız.\\[5pt]
+$(X,Y)$ ile $X$'ten $Y$ içine olan bütün $A$ matrislerinin cümlesini, $(X,Y,P)$ ile de limit veya toplamları koruyan $X$'ten $Y$ ye bütün $A$ matrislerinin cümlesini göstereceğiz. Açık olarak,
+$$
+(X,Y,P)\subset(X,Y)
+$$
+dir. Örneğin $(c,c,P)$ ile $\forall x\in c,\,\forall n\in\mathbb{N},\,A_n(x)$ mevcut ve $x_k\to a\quad(k\to\infty)$ ise $A_n(x)\to a\quad(n\to\infty)$ olduğu kastedilmektedir.\\[5pt]
+Şimdi bazı temel teoremlerimizi ve onların sonuçlarını verelim.\
+
+\begin{theorem}[Silverman-Toeplitz Teoremi]
+$$A\in(c,c,P)\iff
+\begin{cases}
+i)\quad\sup_n\Sigma_k|a_{nk}|<\infty\\
+ii)\quad a_{nk}\to 0\qquad(n\to\infty,\,k\text{ sabit})\\
+iii)\quad \Sigma_ka_{nk}\to 1\qquad(n\to\infty)
+\end{cases}
+$$
+\end{theorem}
+\begin{proof}
+Şart gerektir.
+
+$A\in(c,c,P)$ olsun. $\sup_n\sum\limits_k|a_{nk}|<\infty$ olduğunu gösterelim. \\[5pt]
+
+$\forall x=(x_k)\in c,\,A_n(x)$ mevcut ve $x_k\to a\quad(k\to\infty)$ ise,\\ $A_n(x)\to a\quad(n\to\infty)$
+
+$A_n(x)=\sum\limits_ka_{nk}x_k$ gösteriminde sabit olan $n$ yi gösterimden çıkaralım ve $\forall x\in c$ için $\sum\limits_ka_kx_k$ nın yakınsak olduğunu kabul edelim.\\ Bu takdirde $\sum\limits_k|a_k|<\infty$ dir. Eğer böyle olmasaydı $\sum\limits_k|a_k|=\infty$ olurdu. O zaman bir,
+$$
+n_1<n_2<n_3<\ldots<n_i<n_{i+1}<\ldots
+$$
+artan pozitif tam sayılar dizisi bulunabilir ki,
+$$
+\sum\limits_i=\sum\limits_{k=n_i+1}^{n_{i+1}}|a_k|>i
+$$
+olur. Şimdi $x=(x_k)\in c_o\subset c$ dizisini,
+$$
+x_k=
+	\begin{cases}
+		\dfrac{\text{sgn}\,a_k}{i}, & n_i<k\leq n_i+1\\
+		0, &1\leq k\leq n_{i+1}
+	\end{cases}
+$$
+şeklinde tanımlayalım. Buna göre,
+$$\begin{aligned}
+\sum\limits_{k=1}^\infty a_kx_k&=\sum\limits_{k=n_1+1}^{n_2}a_kx_k+\sum\limits_{k=n_2+1}^{n_3}a_kx_k+\ldots+\sum\limits_{k=n_i+1}^{n_{i+1}}a_kx_k+\ldots\\
+&=\sum\limits_{k=n_1+1}^{n_2}\frac{a_k\text{sgn}\,a_k}{1}+\sum\limits_{k=n_2+1}^{n_3}\frac{a_k\text{sgn}\,a_k}{2}+\ldots+\sum\limits_{k=n_i+1}^{n_{i+1}}\frac{a_k\text{sgn}\,a_k}{i}+\ldots\\
+&=\sum\limits_{k=n_1+1}^{n_2}|a_k|+\sum\limits_{k=n_2+1}^{n_3}\frac{|a_k|}{2}+\ldots+\sum\limits_{k=n_i+1}^{n_{i+1}}\frac{|a_k|}{i}+\ldots\\
+\end{aligned}$$
+olur. Diğer taraftan,
+$$
+\forall i\in\mathbb{N}\text{ için }\frac{1}{i}\sum\limits_{k=n_i+1}^{n_{i+1}}|a_k|>1\text{ olacağından,}
+$$
+$$
+\sum_{k=1}^\infty a_kx_k=\sum_1+\frac{1}{2}\sum_2+\ldots+\frac{1}{i}\sum_i+\ldots>1+1+1+\ldots
+$$
+olması gerekir ki, bu da $\sum\limits_ka_kx_k$ nın ıraksak olduğunu gösterir. Bu da $\sum\limits_ka_kx_k$ nın yakınsaklığına aykırıdır. O halde,
+$$
+\sum\limits_k|a_k|<\infty\quad\text{olur.}
+$$
+ Şimdi, $f(x)=\sum\limits_ka_kx_k$ diyelim. $f:c\to \mathbb{C}$ olduğuna göre, $f\in c^*$ olduğunu gösterelim.\\[5pt]
+$f(x)\in\mathbb{C}\Rightarrow\|f(x)\|=|f(x)|$ dir.
+$$
+|f(x)|=\left|\sum_ka_kx_k\right|\leq\sum_k|a_kx_k|\leq\|x\|\sum_k|a_k|\quad\text{ve}
+$$
+$$M=\sum_k|a_k|<\infty\quad\text{olduğundan}$$ $$\|f(x)\|=|f(x)|\leq M\|x\|$$ olur ki bu da $f$ sınırlı anlamına gelir. $f$'in lineerliği açıktır. Şu halde $f\in c^*$ dır. Bu durumda $f$ fonksiyonelinin normu $\Sigma_k|a_k|$ olur. Şimdi $n$'i tekrar gösterime dahil edersek, $f$ yerine $A_n$ geleceğinden,
+$$
+A_n(x)=\sum_ka_{nk}x_k\quad\text{olup}\quad\|A_n\|=\sum_k|a_{nk}|\quad\text{olacaktır.}
+$$
+
+$\lim_nA_n(x)=a$ olduğundan Banach-Steinhaus teoremine göre $(\|A_n\|)$ normlar dizisi sınırlıdır. Yani, $$\sup_n\|A_n\|<\infty$$ dur. O halde
+$$
+\sup_n\|A_n\|=\sup_n\sum_k|a_{nk}|<\infty
+$$ olur ki bu da i) nin ispatıdır.\\[5pt]
+
+Şimdi, ii) ve iii) nin gerekliliğini gösterelim.\\[5pt]
+
+$A\in(c,c,p)$ olsun. $\forall x\in c$ için, $x_k\to a\quad(k\to\infty)$ ise, $A_n(x)\to a\quad(n\to\infty)$ idi. Özel olarak $x=(0,0,\ldots,0,1,0,\ldots)\in c_o\subset c$ (1, p.inci terimdir) için de şartlar sağlanacağından,
+$$
+A_n(x)=\sum_ka_{nk}x_k=a_{np}\quad\text{olup}
+$$
+$$
+x_k\to 0\quad(k\to\infty)\Rightarrow\lim_nA_n(x)=\lim_na_{np}=0
+$$
+olur ve bu da ii) nin ispatıdır.\\[5pt]
+
+$x=(1,1,\ldots,1,\ldots)$ dizisinin limiti $1$ dir. Buna göre,
+$$
+A_n(x)=\sum_ka_{nk}x_k=\sum_ka_{nk}\to 1\quad(n\to\infty,\, k\text{ sabit})
+$$
+Bu da iii) nin ispatıdır. Böylece her üç şartın gerekliliğini göstermiş oluyoruz.\\[5pt]
+
+Şartlar yeterdir.\\[5pt]
+
+$\forall x\in c$ için i), ii) ve iii) şartları sağlansın. $x=(x_k)\in c$ ve $x_k\to a$ olsun.
+$$
+A_n(x)=\sum_ka_{nk}x_k=\sum_ka_{nk}(x_k-a)+a\sum_ka_{nk}
+$$
+şeklinde yazalım. iii) ye göre $\lim_n(a\sum\limits_ka_{nk})=a$ dır. $(x_k-a)\in c_o$ olduğundan i) ve ii) ve teorem 1.1 dikkate alınırsa,
+$$
+\sum_ka_{nk}(x_k-a)\to 0\quad(n\to\infty,\, k\text{ sabit})
+$$
+olduğu derhal görülür. O halde,
+$$
+\lim_nA_n(x)=a\Rightarrow A\in(c,c,p)\text{ dir.}
+$$
+\end{proof}
+
+Bu teoremin şartlarını sağlayan bir matrise TOEPLİTZ matrisi  veya regüler matris denir. Biz bu tip matrislere kısaca T-matris diyeceğiz.
+
+Şimdi bu teoremin küçük bir genelleştirmesi olan Kojima-Schur teoremini verelim.\
+
+\begin{theorem}[Kojima-Schur Teoremi]
+$$
+A\in(c,c)\iff
+\begin{cases}
+i) \sup_n\sum\limits_k|a_{nk}|<\infty\\
+ii)\text{ Herbir }p\in\mathbb{N}\text{ için},\quad\lim_n\sum\limits_{k=p}^\infty a_{nk}=a_p
+\end{cases}
+$$
+\end{theorem}
+\begin{proof}
+Şartlar gerektir.\\[5pt]
+i) nin gerekliliği tamamen teorem 1.3 deki gibi ispatlanır. Biz ii) nin gerekliliğini ispatlayalım.\\[5pt]
+
+$A\in(c,c)$ olsun $\Rightarrow\forall x\in c$ için $(A_n(x))\in c$ olup $\lim_nA_n(x)$ mevcut. Özel olarak $x=(0,0,\ldots,1,1,\ldots)\in c$ (buradaki ilk 1, p.inci terimdir) dizisi için,
+$$
+A_n(x)=\sum\limits_{k=p}^\infty a_{nk}\quad\text{olur.}
+$$
+
+Buna göre $\lim_nA_n(x)=\lim_n\sum\limits_{k=p}^\infty a_{nk}$ mevcuttur.
+
+$p$  ye bağlı bu limiti $a_p$ ile gösterirsek, $$\lim_n\sum\limits_{k=p}a_{nk}=a_p$$ elde edilir.\\[5pt]
+
+Şartlar yeterdir.\\[5pt]
+
+Kabul edelim ki i) ve ii) sağlansın. $x=(x_k)\in c$ ve $x_k\to a$ olsun.
+$$
+\sum_ka_{nk}x_k=\sum_ka_{nk}(x_k-a)+a\sum_ka_{nk}
+$$
+yazalım. $s_n=\sum\limits_ka_{nk}(x_k-a)$ ve $t_n=a\sum\limits_ka_{nk}$ diyelim.
+
+$\sum\limits_ka_{nk}x_k=s_n+t_n$ olur. ii) ye göre her bir $p$ için, $\lim_n\sum\limits_ka_{nk}=a_p$ mevcut olacağından,
+$$
+\lim_nt_n=\lim_n(a\sum\limits_{k=1}^\infty a_{nk})=a.a_1
+$$
+olacaktır.
+$$
+a_{nk}=\sum\limits_{m=k}^\infty a_{nm}-\sum\limits_{m=k+1}^\infty a_{nm}=a_k-a_{k+1}
+$$
+elde edilir.
+
+$b_k=\lim_na_{nk}=a_k-a_{k+1}$ diyelim. Yani herbir $k\in\mathbb{N}$ için $b_k=a_k-a_{k+1}$ olsun. $m\in\mathbb{N}$ için,
+$$
+\sum\limits_{k=1}^m |b_k|=\sum\limits_{k=1}^m\lim_n|a_{nk}|=\lim_n\sum\limits_{k=1}^m|a_{nk}|\leq\sup_n\sum\limits_{k=1}^m|a_{nk}|
+$$
+$$
+\Rightarrow\sum\limits_{k=1}^\infty|b_k|\leq\sup_n\sum\limits_{k=1}^\infty|a_{nk}|<\infty\Rightarrow\sum_k|b_k|<\infty
+$$\\[5pt]
+
+Şimdi $s_n\to\sum\limits_{k=1}^\infty b_k(x_k-a)$ olduğunu gösterelim.
+$$
+s_n-\sum\limits_{k=1}^\infty b_k(x_k-a)=\sum\limits_{k=1}^\infty(a_{nk}-b_k)(x_k-a)=V_n
+$$
+diyelim.
+$$
+\sum_k|a_{nk}-b_k|\leq\sum_k|a_{nk}|+\sum_k|b_k|
+$$
+$$\begin{aligned}
+\Rightarrow\sup_n\sum_k|a_{nk}-b_k|&\leq\sup_n\left(\sum_k|a_{nk}|+\sum_k|b_k|\right)\\
+&\leq\sup_n\sum_k|a_{nk}|+\sup_n\sum_k|b_k|<\infty\\
+\Rightarrow\sup_n\sum_k|a_{nk}-b_k|&<\infty
+\end{aligned}$$
+Diğer taraftan, $(x_k-a)\in c_o$ olduğundan teorem 1.1 e göre $V_n\to 0\quad(n\to\infty)$ dur. O halde,
+$$
+s_n\to\sum_kb_k(x_k-a)\qquad(n\to\infty)\text{ dir.}
+$$
+$\sum\limits_kb_k(x_k-a)$ mutlak yakınsak olduğundan,
+$$
+\lim_nA_n(x)=\lim_n\sum_ka_{nk}x_k=\lim_ns_n+\lim_nt_n=\sum_kb_k(x_k-a)+a.a_1
+$$
+dir. O halde $A\in (c,c)$ dir.\\[5pt]
+\end{proof}
+Teorem 1.4 deki şartlara uygun bir matrise K-matrisi denir. Demek ki bir K-matrisi regüler olmayabilir. Şimdi bu teoremin önemli bir sonucunu verelim.
+\
+
+\begin{corollary}
+$\Sigma x_k$ yakınsak olsun.
+$$
+\sum_ka_kx_k\text{ yakınsak }\iff(a_k)\in BV
+$$
+\end{corollary}
+\begin{proof}
+Şart gerektir.
+
+$B=(b_{nk})$ matrisini,
+$$
+b_{nk}=\begin{cases}
+a_k-a_{k+1}, & 1\leq k<n\\
+a_n, & k=n\\
+0, & k>n
+\end{cases}
+$$
+şeklinde tanımlayalım.
+
+$s_k=x_1+x_2+\ldots+x_k$ dersek, $\sum\limits_kx_k$ yakınsak olduğundan $s=(s_k)\in c$ dir. Bu durumda,
+$$
+B_n(s)=\sum\limits_{k=1}^\infty b_{nk}s_k=\sum\limits_{k=1}^{n-1}(a_k-a_{k+1})s_k+a_ns_n
+$$
+Halbuki Abel Kısmi toplamasına göre,
+$$
+\sum\limits_{k=1}^{n-1}(a_k-a_{k-1})s_k+a_ns_n=\sum\limits_{k=1}^na_kx_k\text{ dır.}
+$$
+O halde, $$B_n(s)=\sum\limits_{k=1}^na_ks_k$$
+
+Diğer taraftan $\Sigma a_ks_k$ serisi yakınsak olduğundan,
+$$
+\lim_nB_n(s)=\lim_n\sum\limits_{k=1}^na_kx_k
+$$
+mevcuttur. 
+
+Şu halde $(B_n(s))\in c$ dir. $\forall s\in c$ için $(B_n(s))\in c$ olduğundan $B=(b_{nk})$ matrisi bir K-matrisidir. O halde,
+$$
+\sup_n\sum\limits_{k=1}^{\infty}|b_{nk}|<\infty\text{ dur.}
+$$
+Halbuki,
+$$
+\sum\limits_{k=1}^{\infty}|b_{nk}|=\sum\limits_{k=1}^{n-1}|a_k-a_{k+1}|+|a_n|
+$$
+olduğundan,
+$$
+\sup_n\sum\limits_{k=1}^n|a_k-a_{k+1}|<\infty\Rightarrow(a_k)\in BV
+$$
+
+Şart yeterdir.
+
+$(a_k)\in BV\Rightarrow\sup_n\sum\limits_{k=1}^n|a_k-a_{k+1}|<\infty$ olsun.
+
+$l_1\subset BV\subset c$ olduğundan $(a_k)\in c$ ve dolayısıyla $\sup_n|a_n|<\infty$ dur. O halde başta tanımladığımız $B=(b_{nk})$ matrisi için,
+$$
+i)\,\,\sup_n\sum_k|b_{nk}|=\sup_n\left(\sum_k|a_k-a_{k+1}|+|a_n|\right)<\infty
+$$
+şartı sağlanır. $\lim_na_n=a$ demek, her bir $p\in\mathbb{N}$ için,
+$$
+ii)\qquad\qquad\quad\sum\limits_{k=p}^\infty b_{nk}=\sum\limits_{k=p}^{n-1}(a_k-a_{k+1})+a_n\to a_p
+$$
+bulunması demektir. Şu halde $\lim_n\sum\limits_{k=p}^\infty b_{nk}=a_p$ dir.
+
+ i) ve ii) $B=(b_{nk})$ matrisinin bir K-matrisi olduğunu gösterir. Diğer taraftan $\Sigma x_k$ yakınsak olduğundan bunun kısmi toplamlar dizisi olan $s=(s_k)\in c$ dir. Buna göre,
+$$
+B_n(s)=\sum_kb_{nk}s_k=\sum\limits_{k=1}^na_kx_k
+$$
+olmak üzere $(B_n(s))\in c$ dir. Buradan $\sum\limits_{k=1}^\infty$ nın yakınsaklığı ortaya çıkar. Böylece ispat tamamlanmış olur.\\[5pt]
+\end{proof}
+
+Şimdi Schur tarafından 1921 de ispatlanan bir teoremi vereceğiz. Bu teorem, matris üzerine konulan değişik şartlar ve ispatın kullanışlılığı bakımından diğer teoremlerden farklıdır. İspata geçmeden önce bir lemma verelim.
+
+\begin{lemma}
+Her bir $n\in\mathbb{N}$ için $\sum\limits_{k=1}^\infty|b_{nk}|<\infty$ ve $\lim_n\sum\limits_k|b_{nk}|=0$ ise, $\sum\limits_{k=1}^\infty|b_{nk}|$, n'e göre düzgün yakınsaktır.
+\end{lemma}
+\begin{proof}
+$\sum\limits_{k=1}^\infty|b_{nk}|\to 0\quad(n\to\infty)$ olduğundan,
+
+i)
+$\forall\epsilon>0,\,\,\exists n_o=n_o(\epsilon)$ öyle ki, $\forall n>n_o(\epsilon)$ için, $\sum\limits_{k\geq 1}|b_{nk}|<\epsilon$
+
+ii)
+
+$1\leq n\leq n_o(\epsilon)$ olmak üzere, $\exists m=m(n,\epsilon)$ öyle ki, 
+$$
+\sum\limits_{k\geq m}|b_{nk}|<\epsilon
+$$
+
+i) ve ii) den $\exists M=M(\epsilon)\geq 1$ öyle ki, her $n$ için, $\sum\limits_{k\geq M}|b_{nk}|<\epsilon$ kalır. Bu ise, $\sum\limits_k|b_{nk}|$ serisinin n'ye göre düzgün yakınsaklığını gösterir.
+\end{proof}
+\begin{theorem}[Schur Teoremi]
+$$
+A\in(l_\infty,\,c)\iff
+	\begin{cases}
+		i)\,\,\sum\limits_k|a_{nk}| & \text{n'ye göre düzgün yakınsak}\\
+		ii)\,\,\lim_na_{nk}\quad\text{mevcut} & \text{k sabit}
+	\end{cases}
+$$
+\end{theorem}
+
+\begin{proof}
+Şartlar gerektir.
+
+$A\in (l_\infty,c)$ olsun. Önce ii) nin gerekliliğini gösterelim.
+
+$A\in (l_\infty,c)\Rightarrow\forall x\in l_\infty$ için $(A_n(x))\in c$. Özel olarak,\\ $x=(0,0,\ldots,0,1,0,0,\ldots)\in l_\infty$ ($1$, $p$. inci terimde) için de $(A_n(x))\in c$ olacağından, bu dizi için,
+$$
+\lim_nA_n(x)=\lim_n\sum\limits_ka_{nk}x_k=\lim_na_{np}=\text{(mevcut)}
+$$
+olacaktır. (Burada $p$ sabit, herhangi bir sayıdır.)
+
+Şimdi i) nin gerekliliğini gösterelim;\\ $c\subset l_\infty$ olduğundan, $A\in (l_\infty, c)\Rightarrow A\in (c,c)$ dir. Şu halde, $A$ aynı zamada bir K-matrisidir. O halde,
+$$
+\sup_n\sum\limits_k|a_{nk}|<\infty
+$$
+dir. $\lim_na_{nk}$ mevcut olduğundan (yukarıda ii) de gösterildi), $\lim_na_{nk}=a_k$ diyelim.
+$$
+\sum\limits_k\lim_n|a_{nk}|\leq\sup_n\sum_k|a_{nk}|<\infty
+$$
+olduğundan $\sum_k|a_k|<\infty$ olur.
+
+$b_{nk}=a_{nk}-a_k$ diyelim. $\lim_nb_{nk}\quad\text{(n sabit)}$ mevcut olduğundan, (çünkü $\lim_nb_{nk}=0$ dır), ve $\forall n\in\mathbb{N}$ için,
+$$
+\sum_k|b_{nk}|=\sum_k|a_{nk}-a_k|\leq\sum_k|a_{nk}|+\sum_k|a_k|<\infty
+$$
+olduğundan, $B=(b_{nk})$ da bir K-matrisidir. O halde $\forall x\in l_\infty$ ve ($\forall n\in\mathbb{N}$) için, $B_n(x)=\left(\sum\limits_kb_{nk}x_k\right)\in c$ dir.
+
+Şimdi, $\sum\limits_k|b_{nk}|\to 0\quad(n\to\infty)$ olduğunu gösterelim. Farzedelim ki,\\
+$$
+\lim_n\sum_k|b_{nk}|= b>0
+$$
+olsun. Mesela, $\lim\sup_n\sum_k|b_{nk}|=b>0$
+olsun. $(m)$ pozitif tamsayıların bir alt dizisini göstermek üzere,
+$$
+\lim_m\sum_k|b_{mk}|=b>0
+$$
+olacak şekilde $\left(\sum\limits_kb_{nk}\right)_{n\in\mathbb{N}}$ dizisinin bir $\left(\sum\limits_kb_{mk}\right)$ altdizisi vardır.
+
+$\lim_m\sum\limits_k|b_{mk}|=b$ ve her bir $k\in\mathbb{N}$ için, $\lim_mb_{mk}=0$ olduğuna göre, öyle bir $m(1)$ seçebiliriz ki,
+$$
+\left|\sum\limits_{k=1}^\infty|b_{m(1),k}|-b\right|<\frac{b}{10}\quad{ve}\quad\left|b_{m(1),1}\right|<\frac{b}{10}\text{ kalır.}
+$$
+$\sum\limits_{k=1}^\infty|b_{m(1),k}|<\infty\Rightarrow k(1)=1$ olmak üzere öyle bir $k(2)>1$ seçebiliriz ki,
+$$
+\sum\limits_{k=k(2)+1}^\infty|b_{m(1),k}|<\frac{b}{10}
+$$
+kalır.
+$$
+\sum\limits_{k=k(1)+1}^{k(2)}|b_{m(1),k}|=\sum\limits_{k=2}^{k(2)}|b_{m(1),k}|=\sum\limits_{k=1}^\infty|b_{m(1),k}|-|b_{m(1),1}|-\sum\limits_{k=k(2)+1}^\infty|b_{m(1),k}|
+$$
+olup, buradan,
+$$
+\left|\sum\limits_{k=2}^{k(2)}|b_{m(1),k}|-b\right|\leq\left|\sum\limits_{k=1}^\infty|b_{m(1),k}|-b\right|+|b_{m(1),1}|+\sum\limits_{k=k(2)+1}^\infty|b_{m(1),k}|
+$$
+elde edilir. Böylece,
+$$
+\left|\sum\limits_{k=2}^{k(2)}|b_{m(1),k}|-b\right|<\frac{b}{10}+\frac{b}{10}+\frac{b}{10}=\frac{3b}{10}
+$$
+bulunur. Gösterimi kısaltmak bakımından, 
+$$
+\sum\limits_{k=p}^q|b{mk}|=B(m,p,q)
+$$
+ile gösterelim.
+
+Aynı şekilde bir $m(2)>m(1)$ seçebiliriz öyle ki,
+$$
+|B(m(2),1,\infty)-b|<\frac{b}{10}\quad\text{ve}\quad B(m(2),1,k(2))<\frac{b}{10}\text{ kalır.}
+$$
+Bu takdirde yine bir $m(3)>m(2)$ bulunabilir öyle ki, $B(m(2),k(3)+1,\infty)<\frac{b}{10}$ olur. Buradan da,
+$$
+|B(m(2),k(2)+1,k(3))-b|<\frac{3b}{10}
+$$
+bulunur. Bu yol arka arkaya devam edilerek,
+$$
+m(1)<m(2)<\ldots\qquad\text{ve}\qquad 1=k(1)<k(2)<\ldots
+$$
+bulunabilir öyle ki,
+
+$$
+\begin{aligned}
+B(m(r),1,k(r))&<\frac{b}{10}\\
+B(m(r),k(r+1)+1, \infty)&<\frac{b}{10}\\
+|B(m(r),k(r)+1,k(r+1))-b|&<\frac{3b}{10}
+\end{aligned}
+$$
+elde edilir.
+
+Şimdi, $x\in_\infty$ u şöyle tarif edelim;
+$$
+x_k=\begin{cases}
+0, & k=1\\
+(-1)^r\text{sgn}b_{m(r),k}, & k(r)<k\leq k(r+1),\quad(r=1,2,\ldots)
+\end{cases}
+$$
+$x\in l_\infty$ için, $\|x\|=\sup|x_k|$ olduğuna göre, bu dizi için $\|x\|=1$ dir. Bu takdirde,
+$$
+\sum\limits_{k=1}^\infty b_{m(r),k}x_k-(-1)^rb=\sum\limits_{k=1}^{k(r)}b_{m(r),k}x_k+\sum\limits_{k=k(r)+1}^{k(r+1)}b_{m(r),k}x_k+\sum\limits_{k=k(r+1)+1}^\infty b_{m(r),k}x_k-(-1)^rb
+$$
+$$\begin{aligned}
+\Rightarrow&\left|\sum\limits_{k=1}^\infty b_{m(r),k}x_k-(-1)^rb\right|=\\
+&\left|(-1)^r\bigg\{\sum\limits_{k=2}^{k(r)}b_{m(r),k}\text{sgn}\,b_{m(r),k}+
+\sum\limits_{k=k(r)+1}^{k(r+1)}b_{m(r),k}\text{sgn}\,b_{m(r),k}+\sum\limits_{k=k(r+1)+1}^\infty b_{m(r),k}\text{sgn}\,b_{m(r),k}\bigg\}-b\right|\\
+\leq&\sum\limits_{k=2}^{k(r)}\left|b_{m(r),k}\right|+
+\left|\sum\limits_{k=k(r)+1}^{k(r+1)}\left|b_{m(r),k}\right|-b\right|+\sum\limits_{k=k(r+1)+1}^\infty \left|b_{m(r),k}\right|
+<\frac{b}{10}+\frac{3b}{10}+\frac{b}{10}=\frac{b}{2}
+\end{aligned}$$
+Bu eşitsizlik bize $\left(\sum\limits_{k=1}^\infty b_{m(r),k}x_k\right)$ nın sınırlı fakat yakınsak olmadığını gösterir.
+
+O halde ($\forall n\in\mathbb{N}$ için) $(B_n(x))=\left(\sum\limits_kb_{nk}x_k\right)$ dizisi yakınsak değildir. Bu ise başta bulduğumuz sonuca aykırıdır. Demek ki,
+$\lim_n\sum\limits_k|b_{nk}|=0$ dır. Ayrıca, ($\forall n\in\mathbb{N}$ için) $\sum\limits_k|b_{nk}|<\infty$ olduğundan lemma 1.1 gereğince $\sum\limits_k|b_{nk}|$ serisi $n$ ye göre düzgün yakınsaktır.
+
+$$
+\sum\limits_k|a_{nk}|=\sum\limits_k|b_{nk}+a_k|\qquad\text{ve}\qquad\sum|a_k|<\infty
+$$
+olduğu dikkate alınırsa, $\sum\limits_k|a_{nk}|$ nın $n$ ye göre düzgün yakınsamadığı ispatlanmış olur.\
+
+Şartlar yeterdir.
+
+i) ve ii) sağlanır. $\forall x\in l_\infty$ için $|x_k|\leq M$ dir. Buna göre, $\forall x\in l_\infty$ için,
+$$
+|A_n(x)|=\left|\sum\limits_{k=1}^\infty a_{nk}x_k\right|\leq M \sum\limits_k|a_{nk}|<\infty\quad\text{dur.}
+$$
+$\sum\limits_k|a_{nk}|$, $n$ ye göre düzgün yakısak olduğundan,
+$$
+\lim_nA_n(x)=\lim_n\sum_k a_{nk}x_k=\sum_k\lim_na_{nk}x_k=\sum a_kx_k
+$$
+dır. Burada $\lim_na_{nk}=a_k$ dır. $\sum a_kx_k$ serisi mutlak yakınsak olmasından dolayı, bu serinin yakınsak olduğu açıktır.\\[5pt]
+\end{proof}Bu teoremin şartlarını sağlayan bir matrise \textbf{Schur matrisi} denir. Şimdi bu teoremle ilgili sonuçlara geçmeden önce şu tanımı verelim.
+
+\begin{definition}
+$A$ yakınsaklığı koruyan bir matris olsun.
+
+$$
+K(A)=\lim_n\sum_ka_{nk}-\sum_k\lim_na_{nk}
+$$
+farkına $A$ nın karakteristiği denir.
+\end{definition}
+\begin{corollary}
+$$A\in(l_\infty,c)\Rightarrow K(A)=0$$
+\end{corollary}
+\begin{proof}
+$A\in(l_\infty,c)$ ise $\sum_k|a_{nk}|$, dolayısıyla $\sum_ka_{nk}\,\,$ $\,\,n$ ye göre düzgün yakısaktır. O halde,
+$$
+\lim_n\sum_ka_{nk}=\sum_k\lim_na_{nk}
+$$
+olduğundan $K(A)=0$ dır.
+\end{proof}
+\begin{corollary}
+$$
+(l_\infty,c)\cap (c\,,c\,;p)=\emptyset
+$$
+\end{corollary}
+
+\begin{proof}
+Kabul edelim ki, $$(l_\infty,c)\cap (c\,,c\,;p)\neq\emptyset\qquad\text{ olsun.}$$
+
+Bu durumda $\exists A\in (l_\infty,c)\cap(c\,,c\,;p)$ dir. Bu takdirde,
+
+$$
+A\in(l_\infty,c)\Rightarrow K(A)=0\qquad\textbf{(Sonuç 2)}
+$$
+$$
+A\in(c,\,c\,;p)\Rightarrow K(A)=\lim_n\sum_ka_{nk}-\sum_k\lim_na_{nk}=1-0=1
+$$ olur ki, bu bir çelişkidir.
+\end{proof}
+
+\begin{corollary}
+$$
+A\in(l_\infty,c_o)\iff\sum_k|a_{nk}|\to 0\qquad(n\to\infty)
+$$
+\end{corollary}
+
+\begin{proof}
+Hatırlatma: $A=\left(a_{nk}\right)$ matrisinin bütün sınırlı dizileri $0$'a limitlemesi için $\iff$ her $n$ için $\sum\limits_{k=1}^\infty|a_{nk}|$ nın yakınsaması ve $(n\to\infty)$ için $\sum\limits_k|a_{nk}|\to 0$ olmasıdır.\\[5pt]
+
+$A\in(l_\infty,c_o)\Rightarrow \forall x\in l_\infty$ için $\left(A_n(x)\right)\in c_0$ dır. Özel olarak $x=(0,0,\ldots,,1,0,\ldots)$ şeklindeki sıfır dizisi için de $\left(A_n(x)\right)\in c_0$ dır (burada $p$. nci terim $1$ dir).
+
+$\lim_nA_n(x)=0$ olacağından,
+$$
+\lim_nA_n(x)=\lim_n\sum_ka_{nk}x_k=\lim_na_{np}=0
+$$
+Burada $A$ sıfır matrisi olduğundan, $\sum\limits_k|a_{nk}|$, $n$ ye göre düzgün yakınsaktır. O halde,
+$$
+\lim_n\sum_k|a_{nk}|=\sum_k\lim_n|a_{nk}|=0\qquad\text{dır.}
+$$
+\\[5pt]
+Şart yeterdir.\\[5pt]
+$\lim_n\sum\limits_k|a_{nk}|=0$ olsun.\\[5pt]
+$\forall x\in l_\infty$ ve $\forall k\in\mathbb{N}$ için, $\exists M=M_x>0,\,\,\,|x_k|\leq M$ dir. O halde,
+$$
+\lim_n|A_n(x)|\leq\lim_n\sum_k|a_{nk}||x_k|\leq M\lim_n\sum_k|a_{nk}|=0
+$$
+$\Rightarrow (A_n(x))\in c_o\Rightarrow A\in (l_\infty,c_o)$ dır.
+\end{proof}
+
+\begin{corollary}
+$s=(s_n)$ dizisi, $\sum\limits_kx_k$ serisinin kısmi toplamlar dizisi ve $(s_n)\in l_\infty$ olsun. Bu takdirde,
+$$
+\sum_ka_kx_k\quad\text{yakınsak}\iff a=(a_k)\in BV\cap c_o
+$$ 
+\end{corollary}
+\begin{proof}
+Şart gerektir.\\[5pt]
+
+\emph{Sonuç 1} deki yol izlenerek, $B=(b_{nk})$ matrisi,
+$$
+b_{nk}=
+\begin{cases}
+a_k-a_{k+1}, & 1\leq k<n\\
+a_n, & k=n\\
+0, & k>n
+\end{cases}
+$$
+olmak üzere,\
+$$
+B_n(s)=\sum_kb_{nk}s_k=\sum\limits_{k=1}^{n-1}(a_k-a_{k+1})s_k+a_ns_n=\sum\limits_{k=1}^na_kx_k=t_n
+$$
+bulunur. Buna göre $\sum\limits_ka_kx_k$ yakınsak ise $(B_n(s))\in c$ olacağından, $B\in(l_\infty, c)$, yani $B$ bir Schur matrisi olur. O halde,
+\begin{itemize}
+\item[i)] $\sum\limits_k|b_{nk}|$, $n$ ye göre düzgün yakınsak,
+\item[ii)] $\lim_nb_{nk}\quad$ ($k$ sabit) mevcuttur.
+\end{itemize}
+$$
+\sum\limits_{k=1}^\infty|b_{nk}|=\sum\limits_{k=1}^{n-1}|a_k-a_{k+1}|+|a_n|
+$$
+olacağına göre, i) den,
+$$
+\lim_n\sum_k|b_{nk}|=\lim_n\left(\sum\limits_k^{n-1}|a_k-a_{k+1}|+|a_n|\right)
+$$
+nin mevcut olduğu ve dolayısıyla, $\sum\limits_k|a_k-a_{k+1}|<\infty$ olduğu bulunmuş olur. O halde $(a_k)\in BV$. Diğer taraftan $k<n$ için $b_{nk}=a_k-a_{k+1}$ olduğundan $b_{nk}\to a_k-a_{nk}\quad(n\to\infty,\,\,k\text{ sabit})$ olur.
+$$
+\sum_k|b_{nk}|=\sum\limits_{k=1}^{n-1}|a_k-a_{k+1}|+|a_n|
+$$
+olduğundan, i) dikkate alınarak,
+$$
+\lim_n\sum_k|b_{nk}|=\sum_k\lim_n|b_{nk}|=\lim_n\sum\limits_{k=1}^{n-1}|a_k-a_{k+1}|+\lim_n|a_n|
+$$
+ve böylece,
+$$
+\sum_k|a_k-a_{k+1}|=\sum_k|a_k-a_{k+1}|+\lim_n|a_n|
+$$
+elde edilir. Buradan da $\lim_na_n=0$ bulunur ki, bu da $(a_k)\in c_o$ demektir. O halde,
+$$
+(a_k)\in BV\cap c_o\quad\text{ olur.}
+$$
+
+Şart yeterdir.\\[5pt]
+
+$(a_k)\in BV\cap c_o$ ise, $\sum\limits_k|a_k-a_{k+1}|<\infty$ ve $\lim_n|a_n|=0$ dır.
+$$
+\sum_k|b_{nk}|=\sum\limits_{k=1}^{n-1}|a_k-a_{k+1}|+|a_n|
+$$
+olduğuna göre, yukarıdaki şartlardan $\sum\limits_k|b_{nk}|$ nın $n$ ye göre düzgün yakınsak olduğu açıktır. Matrisin tanımı gereğince $\,\,\,\lim_nb_{nk}=a_k-a_{k+1}\quad(k\text{ sabit})$ olduğundan, $B$ bir Schur matrisidir.
+$$
+B_n(s)=\sum_{k=1}^na_kx_k\qquad\text{ve}\qquad B_n(s)\in c
+$$
+olduğundan $\sum\limits_ka_kx_k$ yakınsaktır.\\[5pt] 
+\end{proof}
+
+Şimdi bu konu ile ilgili bazı problemlerin çözümüne geçelim.
+\begin{prob}
+$$
+A\in(BV,l_\infty)\iff M=\sup_{n,k}|a_{n1}+a_{n2}+\ldots+a_{nk}|<\infty
+$$
+\end{prob}
+\begin{coz}
+
+Şart gerektir.
+
+$A\in(BV,l_\infty)\Rightarrow\forall n\in\mathbb{N}$ ve $\forall x=(x_k)\in BV$ için $A_n(x)=\sum\limits_ka_{nk}x_k$ mevcuttur ve $|A_n(x)|\leq K_x$ olacak şekilde bir $K_x>0$ sabiti vardır. Özel olarak $x=(1,1,\ldots,1,\ldots)\in BV$ için de bunlar sağlanacağından, bu dizi için,
+$$
+|A_n(x)|=\left|\sum_ka_{nk}\right|\leq K_x\qquad(\forall n\in\mathbb{N})
+$$
+olacaktır. Bu ise,
+$$
+\sup_{n,k}\left|\sum\limits_{i=1}^ka_{ni}\right|<\infty
+$$
+olduğunu gösterir ki, bu da istenendir.\\[5pt]
+Şart yeterdir.
+
+$x=(x_k)\in BV$ olsun. $s_{nk}=a_{n1}+a_{n2}+\ldots+a_{nk}$ olmak üzere, Abel kısmi toplamasına göre,
+$$
+\sum\limits_{k=1}^pa_{nk}x_k=\sum\limits_{k=1}^ps_{nk}(x_k-x_{k+1})+s_{np}x_{p+1}
+$$
+ve buradan,
+$$
+\left|\sum\limits_{k=1}^pa_{nk}x_k\right|\leq\sum\limits_{k=1}^p|s_{nk}||x_k-x_{k+1}|+|s_{np}||x_{p+1}|
+$$
+bulunur. Hipotez gereğince $\sup_{n,k}|s_{nk}|=M<\infty$ olduğundan,
+$$
+\left|\sum\limits_{k=1}^pa_{nk}x_k\right|\leq M\sum\limits_{k=1}^p|x_k-x_{k+1}|+M|x_{p+1}|
+$$
+olur. $BV\subset c$ olup, $\forall x\in BV$ için, $\sum\limits_k|x_k-x_{k+1}|<\infty$ ve $\lim_p|x_p|$ mevcut olduğundan,
+$$
+|A_n(x)|=\left|\sum_ka_{nk}x_k\right|\leq H
+$$
+olacak şekilde bir $H$ sabiti bulunabilir. O halde $\forall x\in BV$ için $(A_n(x))\in l_\infty\Rightarrow A\in (BV,l_\infty)$
+\end{coz}
+\begin{prob}
+$$
+A\in (BV,c)\iff
+\begin{cases}
+i) M=\sup_{n,k}|a_{n1}+\ldots+a_{nk}|<\infty\\
+ii) \lim_n\sum\limits_{k=p}^\infty a_{nk}\quad(p=1,2,\ldots)\text{ mevcut}
+\end{cases}
+$$
+\end{prob}
+\begin{coz}
+Şart gerektir.\\[5pt]
+$A\in (BV,c)$ ise, $\forall x\in BV$ için $\lim_nA_n(x)$ mevcuttur. Özel olarak $x=(1,1,\ldots)\in BV$ için de bu limit mevcut olacağından,
+$$
+\lim_nA_n(x)=\lim_n\sum_ka_{nk}x_k=\lim_n\sum_ka_{nk}
+$$
+olur, yani,
+$$
+\left(\sum_ka_{nk}\right)_{n\in\mathbb{N}}\in c\Rightarrow\sup_{n,k}\left|\sum\limits_{i=1}^ka_{ni}\right|<\infty
+$$dir. Bu ise i) nin ispatıdır.\\[5pt]
+Yine aynı şekilde $x=(0,0,\ldots,0,1,1,1,\ldots)\in BV$ (ilk $1$, $p$.nci terimdir) için de, $\lim_nA_n(x)=\lim_n\sum\limits_{k=p}^\infty a_{nk}$ mevcuttur. Bu da ii) nin gerekliliğini gösterir.\\[5pt]
+
+Şartlar yeterdir.\\[5pt]
+$x\in BV$ olsun. Problem 1 deki yol izlenerek,
+$$
+\sum\limits_{k=1}^ma_{nk}x_k=\sum\limits_{k=1}^m s_{nk}(x_k-x_{k+1})+s_{nm}x_{m+1}\qquad\qquad\qquad\qquad(i*)
+$$
+yazılır.
+$$
+\sum_k|x_k-x_{k+1}|<\infty\qquad\text{ve}\qquad\sup_{n,k}|s_{nk}|=M<\infty
+$$
+olduğundan $\sum\limits_ks_{nk}(x_k-x_{k+1})$ serisi $\forall n\in\mathbb{N}$ için mutlak yakınsaktır. Ayrıca ii) den
+$$
+\lim_n\sum_ka_{nk}\qquad\text{mevcut ve}\qquad BV\subset c
+$$
+olduğundan $\lim_mx_m$ mevcuttur. O halde (i*) da $m\to\infty$ için limite geçilirse,
+$$
+A_n(x)=\sum_ka_{nk}x_k=\sum_ks_{nk}(x_k-x_{k+1})+\left(\sum_ka_{nk}\right).\lim_mx_{m+1}
+$$
+bulunur ki, buradan, az önceki sonuçlar dolayısıyla $\lim_nA_n(x)$ in mevcut olduğu ortaya çıkar. O halde,
+$$
+(A_n(x))\in c\Rightarrow A\in (BV,c)
+$$
+dir.
+\end{coz}
+\begin{prob}
+$A$ ve $B$ matrisleri arasında $b_{nk}=\sum\limits_{i=1}^na_{ik}$ bağıntısı bulunsun. Bu takdirde,
+$$
+A\in(l_\infty,\gamma)\iff B\in(l_\infty,c)
+$$dir.
+\end{prob}
+\begin{coz}
+Şart gerektir.\\[5pt]
+$A\in(l_\infty,\gamma)$ ise $\forall x\in l_\infty$ için $A_n(x)=\sum_ka_{nk}x_k$ mevcut ve $\sum_kA_n(x)$ yakınsaktır. O halde,
+$$
+s_n(x)=\sum\limits_{i=1}^nA_i(x)
+$$
+olmak üzere $(s_n(x))\in c$ dir. Halbuki,
+$$
+\begin{aligned}
+s_n(x)=\sum\limits_{i=1}^nA_i(x)&=\sum\limits_{i=1}^n\sum_ka_{ik}x_k\\
+&=\sum_k\left(\sum\limits_{i=1}^na_{ik}\right)x_k\\
+&=\sum_kb_{nk}x_k=B_n(x)
+\end{aligned}
+$$
+olduğundan $(B_n(x))\in c\Rightarrow B\in(l_\infty, c)$ dir.\\[5pt]
+Şart yeterdir.\\[5pt]
+
+$B\in(l_\infty, c)$ ise $\forall x\in l_\infty$ için $B_n(x)=\sum\limits_kb_{nk}x_k$ mevcut ve $(B_n(x))\in c$ dir. Halbuki, $B_n(x)=s_n(x)$ olup, kısmi toplamlar dizisi yakınsak olduğundan, $\sum_kA_n(x)$ serisi yakınsaktır. $\Rightarrow A\in(l_\infty,\gamma)$
+\end{coz}\
+\begin{prob}
+$A$ ve $B$ matrisleri arasında problem 3 deki bağıntı bulunmak şartıyla,
+$$
+A\in(c,\gamma)\iff B(c,c)\qquad\text{dir.}
+$$
+\end{prob}
+\begin{coz}
+Şart gerektir.\\[5pt]
+$A\in(c,\gamma)$ ise $\forall x=(x_k)\in c$ için $A_n(x)=\sum_ka_{nk}x_k$ mevcut ve $\sum_kA_n(x)$  yakınsaktır. Yani $s_n(x)=\sum\limits_{i=1}^nA_i(x)$ olmak üzere $(s_n(x))\in c$ dir. Problem 3 de, $s_n(x)=B_n(x)$ olduğunu göstermiştik. O halde $(B_n(x))\in c$ olup, bundan dolayı da $B\in(c,c)$ dir.\\[5pt]
+Şart yeterdir.\\[5pt]
+$B\in(c,c)$ olsun. $\Rightarrow \forall x\in c$ için, $B_n(x)=\sum_kb_{nk}x_k$ mevcut ve $(B_n(x))\in c$ dir.
+$$
+B_n(x)=s_n(x)=\sum\limits_{i=1}^nA_i(x)
+$$
+olduğundan $\sum_nA_n(x)$ serisi yakınsaktır. $\Rightarrow A\in (c,\gamma)$ dır.
+\end{coz}
+\newpage
+
+\section{Seriden-Diziye Dönüşümler}
+
+Bu bölümde, $\sum\limits_kx_k$ serisinin $B=(b_{nk})$ matrisiyle, $B_n(x)=\sum\limits_kb_{nk}x_k$ olmak üzere, $(B_n(x))$ dizisine dönüşümünü inceleyeceğiz. Dikkat edilirse, aslında her seriden diziye dönüşüm, bir dizi uzayından diğer bir dizi uzayı içine olan dönüşümden ibarettir.
+
+Şimdi ilgili teoremlerimize geçmeden önce ispatlarımıza yardımcı olacak bir lemma vereceğiz.
+
+\begin{lemma}
+$\sum_kx_k$ yakınsak olduğunda, $\forall n\in\natn$ için $$\sum_kb_{nk}x_k\qquad\text{yakınsak ise}\qquad\sup_k|b_{nk}|<\infty\quad\text{olur.}$$ 
+\end{lemma}
+\begin{proof}
+Kabul edelim ki, $\sup_k|b_{nk}|=\infty$ olsun. Bu takdirde, $|b_{nk_r}|>r^2\quad(r\in\natn)$ olacak şekilde bir $(k_r)$ tamsayılar dizisi bulunabilir.
+$$
+x_k=
+\begin{cases}
+\dfrac{1}{r^2}\,\sgn(b_{nk_r}), & k=k_r\\
+0, & k\neq k_r
+\end{cases}
+$$
+dizisini gözönüne alalım. Buna göre, 
+$$
+\sum_k|x_k|=\sum_r\frac{1}{r^2}<\infty
+$$
+dur. O halde $\sum x_k$ yakınsaktır.
+$$
+\sum_kb_{nk}x_k=\sum_kb_{nk}\dfrac{\sgn(b_{nk_r})}{r^2}=\sum_{k_r}|b_{nk_r}|\frac{1}{r^2}>\sum_k(1)=\infty
+$$
+olur ki, bu hipoteze aykırıdır. O halde, $\forall n\in\natn$ için, $\sup_k|b_{nk}|<\infty$ dur.
+\end{proof}
+\begin{theorem}
+$$
+B\in(\gamma,c)\iff
+\begin{cases}
+i)\quad\sup_n\sum_k|\bigtriangleup b_{nk}|<\infty\\
+ii)\quad b_{nk}\to\beta_k\quad(n\to\infty,\,\text{k sabit})\quad\text{mevcut.}
+\end{cases}
+$$
+\end{theorem}
+\begin{proof}
+Şart gerektir.
+
+$B\in(\gamma,c)$ olsun. O halde $\sum_kx_k$ yakınsak ise,
+$$
+B_n(x)=\sum_kb_{nk}x_k
+$$
+olmak üzere, $(B_n(x))\in c$ dir. Özel olarak $x=(0,0,\ldots,0,1,0,\ldots)\in\gamma$ (p.nci terim 1 dir) için de bu limit mevcut olacağından, bu dizi için, $\lim_nB_n(x)=\lim_nb_{np}$ (p sabit) mevcuttur. Demek ki $\lim_nb_{nk}$ (k sabit) olur ki, bu limitin değerini $\beta_k$ ile gösterirsek, $\lim_nb_{nk}=\beta_k$ elde edilir ve bu da ii) nin ispatıdır.\\[5pt]
+
+Şimdi de i) nin gerekliliğini gösterelim.
+
+$s_k=x_1+x_2+\ldots+x_k$ olmak üzere, Abel kısmi toplamasına göre,
+$$
+\begin{aligned}
+\sum\limits_{k=1}^mb_{nk}x_k&=\sum\limits_{k=1}^{m-1}\bigtriangleup b_{nk}s_k+s_mb_{nm}\\
+&=\sum\limits_{k=1}^{m-1}\bigtriangleup b_{nk}(s_k-s)+s\sum\limits_{k=1}^{m-1}\bigtriangleup b_{nk}+s_mb_{nm}\\
+&=\sum\limits_{k=1}^{m-1}\bigtriangleup b_{nk}(s_k-s)+s(b_{n1}-b_{nm})+s_mb_{nm}
+\end{aligned}
+$$
+yazılabilir. (Burada $s=\lim_ks_k$ dır. $\sum x_k$ yakınsak olduğundan bu limit mevcuttur.) Hipotezden, $\sum x_k$ yakınsak olduğunda, $\forall n\in\natn$ için $B_n(x)=\sum\limits_kb_{nk}x_k$ yakınsak olacağına göre yardımcı teorem 2.1  dikkate alınarak, $\sup_k|b_{nk}|<\infty$ bulunur.
+
+$_{\emph{($\sup|b_{nm}|<\infty$ \text{olduğundan} $\lim\limits_{m\to\infty}b_{nm}(s_m-s)=0$ \text{dır.})}}$
+
+$$
+\sum_{k=1}^mb_{nk}x_k=\sum_{k=1}^{m-1}b_{nk}(s_k-s)+sb_{n1}+(s_m-s)b_{nm}
+$$
+ifadesinde $m\to\infty$ için limite geçilirse,
+$$
+B_n(x)=\sum_kb_{nk}x_k=\sum_k\bigtriangleup b_{nk}(s_k-s)+sb_{n1}
+$$
+bulunur. $\lim_nB_n(x)$ mevcut ve $\lim_nb_{n1}=\beta_1$ olduğu bilindiğine göre, yukarıdaki ifadeden, $$\lim_n\sum_n\bigtriangleup b _{nk}(s_k-s)$$ limitinin mevcut olduğu aşikardır. O halde,
+$$
+\left(\sum_k\bigtriangleup b_{nk}(s_k-s)\right)_{n\in\natn}\in c \quad\text{dir.}\quad(s_k-s)\in\cs\subset c\quad\text{olduğundan,}
+$$
+$B'=(\bigtriangleup b_{nk})$ bir K-matrisidir. O halde,
+$\sup_n\sum_k|\bigtriangleup b_{nk}|<\infty\quad\text{dur. Bu ise i) nin ispatıdır.}$\\[5pt]
+
+Şartlar yeterdir. i) ve ii) sağlansın. $\sup_n\sum_k|\bigtriangleup b_{nk}|<\infty$ ise, $\forall n\in\natn$ için,
+$$
+\sum_k|b_{nk}-b_{n,k+1}|<\infty
+$$
+ve dolayısıyla,
+$$
+\sum_k(b_{nk}-b_{n,k+1})
+$$
+serisi yakınsaktır. O halde, 
+$$
+\lim_m\left(\sum_{k=1}^m(b_{nk}-b_{n,k+1})\right)=\lim_m(b_{n1}-b_{n,m+1})
+$$
+mevcuttur. Buradan $\lim_mb_{nm}$ nin mevcut olduğu anlaşılır. \\[5pt]
+
+$x\in\gamma$, yani, $\sum\limits_kx_k$ yakınsak ve $s_k=x_1+x_2+\ldots+x_k$ olmak üzere $\lim s_k=s$ olsun. Yukarıda olduğu gibi aynı yol izlenerek,
+$$
+B_n(x)=\sum_kb_{nk}x_k=\sum\limits_{k=1}^\infty\bigtriangleup b_{nk}(s_k-s)+sb_{n1}
+$$
+bulunur. $(s_k-s)\in\cs$ olduğundan, $\forall k\in\natn$ için $|s_k-s|<K$ olacak şekilde bir K sabiti vardır. O halde $\forall n\in\natn$ için i) den,
+$$
+\sum_k|\bigtriangleup b_{nk}||s_k-s|\leq K\sum_k|\bigtriangleup b_{nk}|<\infty
+$$
+dur. Şu halde $\forall n\in\natn$ için,
+$$
+\sum_k\bigtriangleup b_{nk}(s_k-s)\qquad\text{mutlak yakınsaktır.}
+$$
+
+ii) den $\lim_nb_{n1}=\beta_1$ olacağına göre,
+$$
+B_n(x)=\sum_k\bigtriangleup b_{nk}(s_k-s)+s.b_{n1}
+$$
+olduğu dikkate alınırsa, $\lim_nB_n(x)$ in mevcut olduğu yani, $(B_n(x))\in c$ olduğu ispatlanmış olur. $\Rightarrow B\in (\gamma,c)$ dir.
+\end{proof}
+
+Teorem 2.1 in şartlarını sağlayan bir matrise $\beta$-matrisi denir. $\beta$-matrisleri regüler olmayabilir. Şimdi seriden diziye regüler olan bir matrisle ilgili bir teorem verelim.
+\begin{theorem}
+$$
+B\in(\gamma,\,c;\,p)=
+\begin{cases}
+i)\,\,\, \sup_n\sum\limits_k|\bigtriangleup b_{nk}|<\infty\\
+ii)\,\,\, \lim_nb_{nk}=1\quad(\text{k sabit})
+\end{cases}
+$$
+\end{theorem}
+
+\begin{proof}
+Şartlar gerektir.\\[5pt]
+
+$B\in(\gamma,\,c;\,p)$ olsun. Bu takdirde $\forall x\in\gamma$ için $\sum x_k\to s$,
+$$
+\lim_nB_n(x)=\lim_n\sum_kb_{nk}x_k=s
+$$
+şartları sağlanır. Özel olarak $x=(x_k)=(0,0,\ldots,0,1,0,\ldots)_{_\text{(1, p.nci terimde)}}$ için de ilgili şartlar sağlanacağından, $\sum x_k=1$ olup,
+$$
+\lim_nB_n(x)=\lim_nb_{np}=1
+$$
+olacaktır. O halde p sabit olmak üzere, $\lim_nb_{np}=1$ dir. Bu da ii) nin ispatıdır.
+
+i) nin ispatı ise tamamen teorem 2.1 deki gibidir.\\[5pt]
+
+Şartlar yeterdir.  i) ve ii) sağlansın.
+
+i) den $\forall n\in\natn$ için $\sum_k(b_{nk}-b_{n,k+1})$ serisinin yakınsak olduğu ve dolayısıyla,
+$$
+\lim_m\sum\limits_{k=1}^m(b_{nk}-b_{n,k+1})=\lim_m(b_{n1}-b_{n,m+1})
+$$
+eşitliğinin mevcut olduğu açıktır. O halde $\lim_mb_{nm}$ mevcuttur. Böylece teorem 2.1 deki yol izlenerek,
+$$
+\sum_kx_k=s,\qquad s_k=x_1+x_2+\ldots+x_k
+$$
+olmak üzere, $\sum\limits_kb_{nk}x_k=\sum\limits_k\bigtriangleup b_{nk}(s_k-s)+s.b_{n1}$ bulunur.\\[2pt]
+
+Şimdi, $\sum\limits_k\bigtriangleup b_{nk}(s_k-s)+s.b_{n1}$ serisinin aynı zamanda $n$ ye göre düzgün yakınsak olduğunu gösterelim.
+$$
+M=\sup_n\sum_k|\bigtriangleup b_{nk}|<\infty\quad\text{diyelim.}
+$$
+$(s_k-s)\in\cs$ olduğundan $\forall\epsilon>0$ için $\exists n_o=n_o(\epsilon)$ öyle ki, $\forall k>n_o$ için,
+$$
+|s_k-s|<\frac{\epsilon}{M}\quad\text{kalır.}
+$$
+O halde $\forall n\in\natn$ için
+$$
+\left|\sum\limits_{n_0+1}^\infty\bigtriangleup b_{nk}(s_k-s)\right|\leq\sum\limits_{k=n_o+1}^\infty|\bigtriangleup b_{nk}||s_k-s|<\frac{\epsilon}{M}.M=\epsilon
+$$
+bulunur ki, bu da ilgili serinin $n$ ye göre düzgün yakınsak olduğunu gösterir. Buna göre,
+$$
+\begin{aligned}
+\lim_nB_n(x)&=\lim_n\sum_kb_{nk}x_k\\
+&=\lim_n\sum_k\bigtriangleup b_{nk}(s_k-s)+s\lim_nb_{n1}\\
+&=\sum_k\lim_n\bigtriangleup b_{nk}(s_k-s)+s.1\\
+&=\sum_k\lim_n(b_{nk}-b_{n,k+1})(s_k-s)+s\\
+&=\sum_k(1-1)(s_k-s)+s=s\\
+\Rightarrow B\in(\gamma,\,c;\,p)\quad\text{dir.}
+\end{aligned}
+$$
+\end{proof}
+Teorem 2.2 nin şartlarını sağlayan bir matrise $\gamma$-matrisi denir. Her $\gamma$-matrisi regülerdir.\newpage
+
+
+\section{Seriden-Seriye Dönüşümler}
+$\sum_kx_k$ serisi ve $A=(a_{nk})$ matrisi verilsin. $\forall n\in\natn$ için, $A_n(x)=\ankxk$ mevcut ve $\sum_nA_n(x)=s$ ise, bu $s$ sayısına $A\left(\sum\limits_kx_k\right)$ seriden-seriye dönüşümüyle, $\sum\limits_kx_k$ serisinin genelleştirilmiş toplamı denir. Dikkat edilirse yine bu tip bir dönüşüm, iki dizi uzayı arasındaki dönüşümden ibarettir.
+
+Şimdi konu ile ilgili teoremlerimizi verelim.
+
+\begin{theorem}
+$A=(\ank)$ ve $B=(b_{nk})$ matrisleri arasında, $b_{nk}=\sum\limits_{i=1}^n a_{ik}$ bağıntısı mevcut bulunsun. Bu takdirde,
+$$
+A\in(\gamma,\gamma)\iff B(\gamma,\,c)
+$$dir.
+\end{theorem}
+\begin{proof}
+Şart gerektir.\\[5pt]
+$x\in\gamma$ yani, $\sum_kx_k$ yakınsak olsun. $A\in(\gamma, \gamma)$ ise,
+$$
+A_n(x)=\ankxk\quad\text{mevcut ve,}
+$$
+$$
+\sum_nA_n(x)=\sum_n\ankxk\quad\text{yakınsaktır.}
+$$
+Bu çift serinin kısmi toplamı $s_n(x)$ ise, $(s_n(x))\in c$ dir.
+$$
+\begin{aligned}
+s_n(x)=\sum\limits_{i=1}^nA_i(x)&=\sum\limits_{i=1}^n\sum_ka_{ik}x_k\\
+&=\sum_k\left(\sum\limits_{i=1}^na_{ik}\right)x_k\\
+&=\sum_kb_{nk}x_k=B_n(x)\\
+\Rightarrow(B_n(x))\in c\Rightarrow B\in(\gamma,\,c)
+\end{aligned}
+$$
+
+Şart yeterdir. $B\in(\gamma,\,c)$ olsun. 
+
+Bu takdirde, $\forall x\in\gamma$ için,
+$B_n(x)=\sum_kb_{nk}x_k$ mevcuttur ve $(B_n(x))\in c$ dir. Halbuki $s_n(x)=B_n(x)$ olacağından, $(s_n(x))\in c$ yani,
+$$
+\sum_nA_n(x)=\sum_n\ankxk
+$$
+yakınsaktır. O halde $A\in(\gamma,\gamma)$ dır.
+\end{proof}
+\begin{corollary}
+$$
+A\in(\gamma,\gamma)\iff
+\begin{cases}
+i) \,\,\,\sup_n\sum\limits_k\left|\sum\limits_{i=1}^n\ucgen a_{ik}\right|<\infty\\
+ii) \,\,\, \sum\limits_{n=1}^\infty a_{nk}=a_k\quad\text{(k sabit) mevcut}
+\end{cases}
+$$
+\end{corollary}
+\begin{proof}
+$b_{nk}=\sum\limits_{i=1}^na_{ik}$ seçersek,
+$$
+b_{n,k}-b_{n,k+1}=\sum\limits_{i=1}^n(a_{ik}-a_{i,k+1})=\sum\limits_{i=1}^n\ucgen a_{ik}\quad\text{dır.}
+$$
+Ayrıca, $\lim_n\sum\limits_{i=1}^na_{ik}=\lim_nb_{nk}$ olduğuna göre,
+$$
+\lim_n\sum\limits_{i=1}^na_{ik}=\sum\limits_{n=1}^\infty \ank=\lim_nb_{nk}
+$$
+Buna göre teorem 2.1 ve teorem 3.1 dikkate alınırsa, şartların gerek ve yeter olduğu hemen görülür.
+
+\end{proof}
+\begin{theorem}
+$A=(\ank)$ ve $B=(\bnk)$ matrisleri arasında $\bnk=\sum\limits_{i=1}^na_{ik}$ bağıntısı bulunsun. Bu takdirde,
+$$
+A\in(\gamma, \gamma\, ; p)\iff B\in(\gamma, c\, ; p)
+$$
+\end{theorem}
+
+\begin{proof}
+Şart gerektir. $A\in(\gamma, \gamma\,; p)$ olsun. O halde $\sum_kx_k=s$ ise,
+$$
+\sum\limits_{n=1}^\infty\,\sum_{k=1}^\infty\ank x_k=s \quad\text{dir.}
+$$
+Bu çift serinin kısmi toplamlar dizisi,
+$$\begin{aligned}
+S_n(x)&=\sum\limits_{i=1}^ny\,\sum_{k=1}^\infty a_{ik} x_k\\
+&=\sum_{k=1}^\infty\,\left(\sum\limits_{i=1}^n a_{ik}\right) x_k\quad\text{dır.}
+\end{aligned}$$
+O halde $\forall x=(x_k)\in\gamma$ için, $(S_n(x))\in c$ olup, $\sum\limits_kx_k=w\Rightarrow\lim_nS_n(x)=s$ dir.\\[5pt]
+
+Halbuki $S_n(x)=B_n(x)\Rightarrow B\in(\gamma,\,c\,;p)$ dir.\\[5pt]
+Şart yeterdir. $B\in(\gamma,\,c\,;p)$ olsun.
+
+Bu durumda $B_n(x)=\sum\limits_k\bnk x_k$ mevcut ve $\sum_kx_k=s$ ise $\lim_nB_n(x)=s$ dir. Halbuki $S_n(x)=B_n(x)$ olduğundan, $\lim_nS_n(x)=s$ olup, $\sum\limits_k\sum\limits_k\ank x_k=s$ dir.
+
+O halde $A\in(\gamma, \gamma\,;p)$ dir. Teorem 3.2 nin şartlarını sağlayan bir matrise $\alpha$-matrisi denir. $\alpha$-matrisleri regüler matrislerdir.
+\end{proof}
+\begin{corollary}
+$$A\in(\gamma, \gamma\,;p)\iff
+\begin{cases}
+i)\,\,\,\sup_n\sum\limits_k\left|\sum\limits_{i=1}^n\ucgen a_{ik}\right|<\infty\\
+ii)\,\,\,\sum\limits_{n=1}^\infty \ank=1
+\end{cases}
+$$
+\end{corollary}
+\begin{proof}
+Sonuç 1.3.1 ve teorem 2.2 dikkate alınarak, şartların yeterliliği teorem 3.2 ye göre hemen elde edilir.
+\end{proof}
+Şimdi $l_1$ ve $l_p$ uzayları ile ilgili önemli bir teorem verelim.\\[5pt]
+
+\begin{theorem}
+\begin{itemize}
+\item[i)] $1\leq p<\infty$ olmak üzere,
+$$
+A\in(l_1,\,l_p)\iff M=\sup_n\sum_n|\ank|^p<\infty
+$$
+\item [ii)] $p=\infty$ olmak üzere,
+$$
+A\in(l_1,\,l_p)\iff\sup_{n,k}|\ank|<\infty
+$$
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+i) $\quad1\leq p<\infty$ olsun.
+
+Şart gerektir.\\[5pt]
+$A\in(l_1,\,l_p)$ ise $\forall x\in l_1$ için $A_i(x)=\sum\limits_{k=1}^\infty a_{ik}x_k$ mevcut ve $$\sum\limits_i|A_i(x)|^p=\sum_i\left|\sum_ka_{ik}x_k\right|^p<\infty$$ dur. $(A_i(x))\in c$ olduğundan, $\lim\sup_i\|A_i(x)\|<\infty$ olur ve böylece Banach-Steinhaus teoremine göre $\left(\|A_i\|\right)$ normlar dizisi sınırlıdır.
+
+$A_i:l_1\to \compc$ sınırlı ve açık olarak lineer olduğundan, $i\in\natn$ olmak üzere $A_i\in l_i^*$ dır.
+
+Şimdi, $\forall x\in l_1$ için $$q_n(x)=\left(\sum\limits_{i=1}^n|A_i(x)|^p\right)^{1/p}$$ olacak şekilde bir $q_n$ tarif edelim.\\[3pt]
+\begin{itemize}
+\item[a)] Aşikar olarak, $q_n(\lambda x)=|\lambda|q_n(x)\qquad(\forall \lambda\in\compc)$\\[2pt]
+\item[b)] $x,y\in l_1$ için,
+$$\begin{aligned}
+ q_n(x+y)&=\left(\sum\limits_{i=1}^n|A_i(x+y)|^p\right)^{1/p}\\
+&\leq\left(\sum\limits_{i=1}^n(|A_i(x)|+|A_i(y)|)^p\right)^{1/p}\\
+&\leq\left(\sum\limits_{i=1}^n|A_i(x)|^p\right)^{1/p}+\left(\sum\limits_{i=1}^n|A_i(y)|^p\right)^{1/p}\\
+\end{aligned}$$
+şeklindedir (Minkovski eşitsizliğinden). O halde,
+$$
+q_n(x+y)\leq q_n(x)+q_n(y)\qquad\text{dir.}
+$$
+\end{itemize}
+a) ve b), $q_n$ in $l_1$ üzerinde bir yarı-norm olduğunu gösterir. $A_i$ lerin sınırlı oluşundan $q_n$ sınırlı, dolayısıyla sürekli olur. (Hipoteze göre zaten $\sum\limits_{i=1}^\infty |A_i(x)|^p<\infty$ idi). O halde $l_1$ üzerinde,
+$$
+\sup_nq_n(x)=\left(\sum\limits_{i=1}^\infty |A_i(x)|^p\right)^{1/p}<\infty
+$$
+olur. Bu durumda $l_1$ üzerinde 
+$$
+\left(\sum\limits_i |A_i(x)|^p\right)^{1/p}\leq H.\|x\|
+$$
+olacak şekilde bir H sabiti bulabiliriz. Buradan,
+$$
+\sum\limits_{i=1}^\infty |A_i(x)|^p\leq H^p.\|x\|^p
+$$
+elde edilir. Özel olarak, $x=(0,0,\ldots,0,1,0,\ldots)\in l_1$ (1, m.nci terimde) için de bu sağlanacağından, bu dizi için $\|x\|=1$ olup, $\forall n\in\natn$ için
+$$
+\sum\limits_i |A_i(x)|^p=\sum\limits_i |a_{im}|^p\leq H^p
+$$
+$\Rightarrow\sup_k\sum\limits_{n=1}^\infty|\ank|^p<\infty$ bulunur.\\[5pt]
+
+Şart yeterdir.
+$$
+\sum\limits_{n=1}^\infty |A_n(x)|^p=\sum\limits_{n=1}^\infty\left|\sum\limits_{k=1}^\infty \ank x_k\right|^p<\infty
+$$
+olduğunu ispat edeceğiz. Minkowski eşitsizliği gereğince,
+$$
+\begin{aligned}
+\left(\sum_n\left|\sum_k\ank x_k\right|^p\right)^{1/p}&\leq\left[\sum_n\left(\sum_k|\ank x_k|\right)^p\right]^{1/p}\\
+&=\left[\sum_n\left(|a_{n1}x_1|+|a_{n2}x_2|+\ldots+|\ank x_k|+\ldots\right)^p\right]^{1/p}\\
+&\leq\left(\sum_n|a_{n1}x_1|\right)^{1/p}+\left(\sum_n|a_{n2}x_2|\right)^{1/p}+\ldots+\left(\sum_n|\ank x_k|\right)^{1/p}+\ldots
+\end{aligned}
+$$ olacağından,
+$$
+\begin{aligned}
+\left(\sum_n\left|\sum_k\ank x_k\right|^p\right)^{1/p}&\leq\sum_k\left(\sum_n|\ank x_k|^p\right)^{1/p}\\
+&=\sum_k|x_k|\left(\sum_n|\ank|^p\right)^{1/p}\\
+&\leq M^{\frac{1}{p}} \sum_k|x_k|<\infty
+\end{aligned}
+$$
+elde edilir. \newpage O halde, 
+$$
+\sum_n\left|\sum_k\ank x_k\right|^p<\infty\quad\text{dur.}
+$$ İspatı istenen de  budur.\\[5pt]
+ii) $\quad p=\infty$ halini gözönüne alalım.
+
+Şart gerektir. $A\in(l_1,\lsons)$ ise $\forall x\in l_1$ için $|A_n(x)|\leq K$ olacak şekilde bir K sabiti vardır. O halde $\forall x\in l_1$ için $\sup_n|A_n(x)|<\infty$ dur. Özel olarak, $x=(0,0,\ldots,0,1,0,\ldots)\in l_1$ alırsak (1, m.nci terimde),  dizisi için de ilgili şartlar sağlanacağından $\forall n,m\in\natn$ için
+$$
+|A_n(x)|=\left|\sum_k\ank x_k\right|=|a_{nm}|\leq K\qquad\text{olur.}
+$$
+$\Rightarrow\sup_{n,k}|\ank|<\infty$ bulunur.
+
+Şart yeterdir. $L=\sup_{n,k}|\ank|<\infty$ olsun. $\forall n\in\natn$ için,
+$$
+|A_n(x)|=\left|\sum_k\ank x_k\right|\leq\sum_k|\ank|.|x_k|<\infty
+$$
+olur ki, $|A_n(x)|\in l_\infty\Rightarrow A\in(l_1,\,\lsons)$ dur.
+\end{proof}
+
+
+
+
+
+\end{document}
